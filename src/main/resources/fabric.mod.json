@@ -1,0 +1,44 @@
+{
+	"schemaVersion": 1,
+	"id": "pruebamc",
+	"version": "${version}",
+	"name": "pruebaMC",
+	"description": "This is an example description! Tell everyone what your mod is about!",
+	"authors": [
+		"Torresito"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "MIT",
+	"icon": "assets/pruebamc/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"casti.benja.PruebaMC"
+		],
+		"client": [
+			"casti.benja.PruebaMCClient"
+		],
+		"fabric-datagen": [
+			"casti.benja.PruebaMCDataGenerator"
+		]
+	},
+	"mixins": [
+		"pruebamc.mixins.json",
+		{
+			"config": "pruebamc.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.16.5",
+		"minecraft": "~1.21.1",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
