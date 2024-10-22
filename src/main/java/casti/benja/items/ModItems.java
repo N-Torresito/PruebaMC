@@ -1,10 +1,12 @@
 package casti.benja.items;
 
+import casti.benja.FoodComponents.ModFoodComponents;
 import casti.benja.PruebaMC;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.component.type.FoodComponent;
-import net.minecraft.component.type.FoodComponents;
+import net.minecraft.item.ItemConvertible;
+import net.minecraft.util.Rarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
 import net.minecraft.registry.Registries;
@@ -13,9 +15,21 @@ import net.minecraft.util.Identifier;
 
 public class ModItems {
 
-    public static final Item PINK_GARNET  = registerItem("pink_garnet", new Item(new Item.Settings()));
-    public static final Item RAW_PINK_GARNET  = registerItem("raw_pink_garnet", new Item(new Item.Settings()));
-    public static final Item BANANA = registerItem("banana", new Item(new Item.Settings().food(FoodComponents.COOKED_BEEF)));
+    public static final Item PINK_GARNET  = registerItem(
+            "pink_garnet"
+            , new Item(new Item.Settings()));
+    public static final Item RAW_PINK_GARNET  = registerItem(
+            "raw_pink_garnet",
+            new Item(new Item.Settings()));
+    public static final Item PEEL = registerItem(
+            "peel",
+            new Item(new Item.Settings()
+                    .rarity(Rarity.EPIC)));
+    public static final Item BANANA = registerItem(
+            "banana",
+            new Item(new Item.Settings()
+                    .food(ModFoodComponents.BANANA)
+                    .rarity(Rarity.RARE)));
 
     private static Item registerItem(String name, Item item){
         return Registry.register(Registries.ITEM, Identifier.of(PruebaMC.MOD_ID,name), item);
@@ -32,11 +46,10 @@ public class ModItems {
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.FOOD_AND_DRINK).register(entries -> {
             entries.add(BANANA);
+            entries.add(PEEL);
         });
 
-
         FuelRegistry.INSTANCE.add(PINK_GARNET, 20*20);
-
     }
 
 
